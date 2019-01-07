@@ -1,14 +1,14 @@
-﻿# D121：[RFID设备](https://github.com/OS-Q/D121) 
+﻿# D121：[NFC标签](https://github.com/OS-Q/D121) 
 
 [![sites](OS-Q/OS-Q.png)](http://www.OS-Q.com)
 
-#### 归属被动通信：[W18](https://github.com/OS-Q/M5)
+#### 归属被动通信：[W18](https://github.com/OS-Q/W18)
 
 #### 关于系统架构：[OS-Q](https://github.com/OS-Q/OS-Q)
 
 ## [节点描述](https://github.com/OS-Q/D121/wiki) 
 
-D121RFID读卡设备，用于读取RFID标签
+NFC标签设备，标记物品，被动反馈信息
 
 ### [共用资源](OS-Q/)
 
@@ -21,30 +21,32 @@ D121RFID读卡设备，用于读取RFID标签
 
 ## [同级设备](https://github.com/OS-Q/W18/wiki) 
 
+
 #### D120：[RFID标签](https://github.com/OS-Q/D120)
 
-用作标签标识物体
+用作RFID标签标识物体，被动触发读写和控制事件
 
-#### -> D121：[RFID设备](https://github.com/OS-Q/D121)
+#### -> D121：[NFC标签](https://github.com/OS-Q/D121)
 
-用作RFID读卡设备
+用作NFC标签标识物品，被动触发读写和控制事件
 
-#### D122：[NFC标签](https://github.com/OS-Q/D122)
+#### D122：[蓝牙标签](https://github.com/OS-Q/D122)
 
-用作标签标识物品
+蓝牙被动探测标签，用作被动反馈信息
 
-#### D123：[NFC设备](https://github.com/OS-Q/D123)
+#### D123：[NULL](https://github.com/OS-Q/D123)
 
-用作NFC读卡设备
 
-#### D124：[蓝牙标签](https://github.com/OS-Q/D124)
 
-蓝牙广播标签信息
+#### D124：[NULL](https://github.com/OS-Q/D124)
+
+
 
 #### D125：[NULL](https://github.com/OS-Q/D125)
 
 
 #### D126：[NULL](https://github.com/OS-Q/D126)
+
 
 ---
 

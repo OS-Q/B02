@@ -26,14 +26,21 @@
 /* Includes ------------------------------------------------------------------*/
 #include "lis3dh_driver.h"
 #include "defines.h"
-#include "stm32f0xx_hal.h"
 
-
-
+#if  1
+#define HAL_MODE_IIC
+extern I2C_HandleTypeDef hi2c1;
+#define HAL_IIC hi2c1
+#define IIC_ADDR 0X30
+#else
+#define HAL_MODE_SPI
+extern SPI_HandleTypeDef hspi1;
+#endif
 //#include "spi.h"
 /* Private typedef -----------------------------------------------------------*/
 typedef unsigned          char u8;
-extern SPI_HandleTypeDef hspi1;
+
+
 /* USER CODE BEGIN 0 */
 uint8_t TxBuff[10];
 uint8_t RxBuff[10];
@@ -42,11 +49,16 @@ uint8_t RxBuff[10];
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /**
-*  Envia um byte através da SPI e retorna um byte recebido pela mesma
+*  Envia um byte atravï¿½s da SPI e retorna um byte recebido pela mesma
 **/
-u8 MEMS_SendByte( u8 byte ){
- 
+u8 MEMS_SendByte( u8 byte)
+{
+#ifdef HAL_MODE_IIC
+	HAL_I2C_Mem_Write(&HAL_IIC,LIS3DH_MEMS_I2C_ADDRESS, 0x33,1, &byte, 1, 1000);
+  //HAL_I2C_Mem_Read(&HAL_IIC,LIS3DH_MEMS_I2C_ADDRESS,Reg,1, Data, 1, 1000);
+#else
  HAL_SPI_TransmitReceive(&hspi1,TxBuff, RxBuff,1,1000);
+#endif
 	return RxBuff[0];
 }
 
@@ -87,7 +99,11 @@ void SPI_Mems_Write_Reg(u8_t WriteAddr, u8_t Data)
 u8_t LIS3DH_ReadReg(u8_t Reg, u8_t* Data) {
   
   //To be completed with either I2c or SPI reading function
+#ifdef HAL_MODE_IIC
+  HAL_I2C_Mem_Read(&HAL_IIC,LIS3DH_MEMS_I2C_ADDRESS,Reg,1, Data, 1, 1000);
+#else
   *Data = SPI_Mems_Read_Reg( Reg );  
+#endif
   return 1;
 }
 
@@ -103,7 +119,11 @@ u8_t LIS3DH_ReadReg(u8_t Reg, u8_t* Data) {
 u8_t LIS3DH_WriteReg(u8_t WriteAddr, u8_t Data) {
   
   //To be completed with either I2c or SPI writing function
+#ifdef HAL_MODE_IIC
+  HAL_I2C_Mem_Write(&HAL_IIC,LIS3DH_MEMS_I2C_ADDRESS, WriteAddr,1, &Data, 1, 1000);
+#else
   SPI_Mems_Write_Reg(WriteAddr, Data);  
+#endif
   return 1;
 }
 
@@ -119,9 +139,12 @@ u8_t LIS3DH_WriteReg(u8_t WriteAddr, u8_t Data) {
 *******************************************************************************/
 status_t LIS3DH_GetWHO_AM_I(u8_t* val){
   
+#ifdef HAL_MODE_IIC
+  HAL_I2C_Mem_Read(&HAL_IIC, LIS3DH_MEMS_I2C_ADDRESS,LIS3DH_WHO_AM_I,1, val, 1, 1000);
+#else
   if( !LIS3DH_ReadReg(LIS3DH_WHO_AM_I, val) )
     return MEMS_ERROR;
-  
+#endif
   return MEMS_SUCCESS;
 }
 

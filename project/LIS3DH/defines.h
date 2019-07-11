@@ -1,8 +1,9 @@
 #ifndef __DEFINES_H__
-#define __DEFINES_H__ 1
-#include "stm32f0xx_hal.h"
-#include "pinos.h"
+#define __DEFINES_H__ 
+
+#include "main.h"
 #include "const_var.h"
+
 #define GRAVIDADE 4095
 
 //Registradores do Acelerometro
@@ -50,6 +51,21 @@
 
 #define N_READS							16
 #define SHIF_N_READS				4
+
+
+#define SPI_MISO     							GPIOC,GPIO_PIN_7
+#define SPI_MOSI     							GPIOC,GPIO_PIN_6
+#define SPI_SCK      							GPIOC,GPIO_PIN_5
+#define CHIPSELECT  							GPIOE,GPIO_PIN_5
+#define INTERRUPT1   							GPIOC,GPIO_PIN_2
+#define INTERRUPT1_SENSIBILIDADE  EXTI_PORT_GPIOC,EXTI_SENSITIVITY_RISE_ONLY
+#define INTERRUPT2   							GPIOD,GPIO_PIN_3
+#define INTERRUPT2_SENSIBILIDADE 	EXTI_PORT_GPIOD,EXTI_SENSITIVITY_RISE_ONLY
+
+//usado no controle.c para configurar os pinos das teclas
+#define ABRE                GPIOB,GPIO_PIN_7
+#define ABRE_SENSIBILIDADE  EXTI_PORT_GPIOB,EXTI_SENSITIVITY_FALL_LOW
+
 
 // controle.c
 void LIS3DH_Init(void);

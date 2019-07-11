@@ -10,6 +10,8 @@ extern AxesRaw_t leitura;
 extern AxesRaw_t leitura_inicial;
 extern uint8_t StatusRegVar;
 extern uint8_t StatusAUXVar;
+extern uint16_t  DataReady ;   				  /*variï¿½vel responsï¿½vel pela indicaï¿½ï¿½o de ODReady*/
+
 
 void LIS3DH_INT1_ISR(void)
 {	
@@ -41,8 +43,8 @@ void LIS3DH_Init(void)
 void MEMS_Startup (void)
 {
 	LIS3DH_GetWHO_AM_I(&WhoAmI);
-	LIS3DH_WriteReg(LIS3DH_TEMP_CFG_REG, 0x00);	
-	LIS3DH_WriteReg(LIS3DH_CTRL_REG1, 0x5F);
+	LIS3DH_WriteReg(LIS3DH_TEMP_CFG_REG, 0xC0);	
+	LIS3DH_WriteReg(LIS3DH_CTRL_REG1, 0x57);
 	LIS3DH_WriteReg(LIS3DH_CTRL_REG2, 0x00);
 	LIS3DH_WriteReg(LIS3DH_CTRL_REG3, 0x50);
 	LIS3DH_WriteReg(LIS3DH_CTRL_REG4, 0x80);
@@ -79,7 +81,7 @@ void MEMS_Startup (void)
 
 uint16_t Modulo (int_least16_t var){
 		if(var < 0){
-		var *=-1; //realiza o módulo
+		var *=-1; //realiza o mï¿½dulo
 	}
 	return var;
 }
@@ -109,18 +111,18 @@ float GetAngle (int_least16_t x1, int_least16_t y1 , int_least16_t z1, int_least
 	aux_z2 *= aux_z2;    //calcula o quadrado de z2
 	square_sum1 = sqrt(aux_x1 + aux_y1 + aux_z1); //calcula a raiz da soma dos quadrados do vetor de entrada
 	square_sum2 = sqrt(aux_x2 + aux_y2 + aux_z2); //calcula a raiz da soma dos quadrados do vetor de referencia
-    /****** produto escalar é dado por: A*B = |A|*|B|*cosO   ****/
+    /****** produto escalar ï¿½ dado por: A*B = |A|*|B|*cosO   ****/
 	//inicio do claculo de A*B 
 	aux_x1 = (int_least32_t)((int_least32_t)x1* (int_least32_t)x2);
 	aux_y1 = (int_least32_t)((int_least32_t)y1* (int_least32_t)y2);
 	aux_z1 = (int_least32_t)((int_least32_t)z1* (int_least32_t)z2);
-	aux_teta = (aux_x1 + aux_y1 + aux_z1);//término do calculo de A*B
+	aux_teta = (aux_x1 + aux_y1 + aux_z1);//tï¿½rmino do calculo de A*B
 	aux_teta1 = (square_sum1*square_sum2);//calculo do produto |A|*|B| 
 	//inicio do calculo de angulo teta
 	teta = (float)(((float)aux_teta)/((float)aux_teta1)); 
 	teta = acos(teta); //teta esta em radianos
 	// arredondamento angular   
 	teta = (float)(teta*(float)Transf_graus); //converte de radianos para graus (Transf_graus = 180/pi)
-	//n = (teta - floor(teta) > 0.5) ? ceil(teta) : floor(teta); //usado no lugar da função round() se fosse devolver um inteiro
+	//n = (teta - floor(teta) > 0.5) ? ceil(teta) : floor(teta); //usado no lugar da funï¿½ï¿½o round() se fosse devolver um inteiro
 	return (teta);
  }

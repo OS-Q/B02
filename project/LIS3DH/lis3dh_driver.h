@@ -29,14 +29,17 @@
 
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
-#define SPI_CS_Pin GPIO_PIN_4
-#define SPI_CS_GPIO_Port GPIOA
 
-#define INT2_Pin GPIO_PIN_0
-#define INT2_GPIO_Port GPIOA
-#define INT1_Pin GPIO_PIN_1
+#define SPI_CS_Pin GPIO_PIN_1
+#define SPI_CS_GPIO_Port GPIOB
+
+#define INT1_Pin GPIO_PIN_0
 #define INT1_GPIO_Port GPIOA
+#define INT2_Pin GPIO_PIN_1
+#define INT2_GPIO_Port GPIOA
 
+#define LED_Pin GPIO_PIN_4
+#define LED_Port GPIOA
 //these could change accordingly with the architecture
 
 #ifndef __ARCHDEP__TYPES
@@ -461,7 +464,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_STATUS_AUX_2DA                           0x02
 #define LIS3DH_STATUS_AUX_1DA                           0x01
 
-#define LIS3DH_MEMS_I2C_ADDRESS			        0x33
+#define LIS3DH_MEMS_I2C_ADDRESS			        0x30
 
 //FIFO REGISTERS
 #define LIS3DH_FIFO_CTRL_REG			        0x2E
@@ -543,7 +546,7 @@ u8_t LIS3DH_WriteReg(u8_t Reg, u8_t Data);
 
 #endif /* __LIS3DH_H */
 
-/******************* (C) COPYRIGHT 2012 STMicroelectronics *****END OF FILE****/
+/******************* (C) COPYRIGHT QITAS *****END OF FILE****/
 
 
 

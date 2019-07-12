@@ -147,7 +147,7 @@ int main(void)
 		if(DataReady)
 		{
 			DataReady = 0;
-			Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
+			//Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
 			printf("LIS3DH_GetAngle :%f\n",Angulo);
 			printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		}

@@ -67,13 +67,14 @@
 #define ABRE_SENSIBILIDADE  EXTI_PORT_GPIOB,EXTI_SENSITIVITY_FALL_LOW
 
 
-// controle.c
+void LIS3DH_config(void);
 void LIS3DH_Init(void);
 void LIS3DH_INT1_ISR(void);
 void LIS3DH_INT2_ISR(void);
+
 uint8_t MEMS_SendByte( uint8_t byte );
 uint8_t MEMS_Read( uint8_t reg );
-void MEMS_Startup (void);
+
 void MEMS_Posicao_Inicial(void);
 uint16_t Modulo (int_least16_t var);
 void pega_Dados(void);
@@ -85,6 +86,6 @@ void LIS3DH_ClickSetup(void);
 void LIS3DH_6DSetup (void);
 void Buttons_Init(void);
 void Buttons_ISR (void);
-float GetAngle (int_least16_t x1, int_least16_t y1 , int_least16_t z1, int_least16_t x2, int_least16_t y2 , int_least16_t z2);
+//float GetAngle (int_least16_t x1, int_least16_t y1 , int_least16_t z1, int_least16_t x2, int_least16_t y2 , int_least16_t z2);
 #endif
 

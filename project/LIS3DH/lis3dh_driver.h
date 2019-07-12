@@ -419,7 +419,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_XS_DISABLE                              0x00
 
 //INTERRUPT CLICK SOURCE REGISTER
-#define LIS3DH_CLICK_SRC                               0x39
+#define LIS3DH_CLICK_SRC          0x39
 //INTERRUPT CLICK SOURCE REGISTER bit mask
 #define LIS3DH_IA                                      0x40
 #define LIS3DH_DCLICK                                  0x20

@@ -205,6 +205,7 @@ LIS3DH_NO_CLICK                        =               0x00
 
 //Register Definition
 #define LIS3DH_WHO_AM_I				0x0F  // device identification register
+#define LIS3DH_WHO_NAME				0x33  
 
 // CONTROL REGISTER 1
 #define LIS3DH_CTRL_REG1				0x20

@@ -131,7 +131,7 @@ int main(void)
   //MX_IWDG_Init();
   MX_RTC_Init();
 	LIS3DH_GetWHO_AM_I(&ID);
-	printf("LIS3DH_GetWHO_AM_I :%X\n",ID);
+	if(LIS3DH_WHO_NAME == ID) printf("LIS3DH IS HERE:%X\n",ID);
 	LIS3DH_Init();
 	printf("Ctrl_reg :%X %X %X %X %X %X\n",Ctrl_reg1,Ctrl_reg2,Ctrl_reg3,Ctrl_reg4,Ctrl_reg5,Ctrl_reg6);
   /* USER CODE BEGIN 2 */

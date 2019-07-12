@@ -26,7 +26,14 @@
 #define INT2_Pin 				INIT2_Pin
 #define INT2_GPIO_Port 	INIT2_GPIO_Port
 
-//these could change accordingly with the architecture
+#ifndef __SHARED__MACROS
+
+#define __SHARED__MACROS
+//#define ValBit(VAR,Place)         (VAR & (1<<Place))
+#define BIT(x) ( (x) )
+
+#endif 
+/*__SHARED__MACROS*/
 
 #ifndef __ARCHDEP__TYPES
 #define __ARCHDEP__TYPES
@@ -203,7 +210,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #endif /*__SHARED__CONSTANTS*/
 
 
-#define LIS3DH_MEMS_I2C_ADDRESS			        0x30
+#define LIS3DH_I2C_ADDRESS			0x30
 
 
 //Register Definition (R)
@@ -225,61 +232,60 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_TEMP_CFG_REG			0x1F
 #define LIS3DH_ADC_PD				   	BIT(7)
 #define LIS3DH_TEMP_EN					BIT(6)
-// CONTROL REGISTER 1
+// CONTROL REGISTER 1 (RW)
 #define LIS3DH_CTRL_REG1				0x20
 #define LIS3DH_ODR_BIT				  BIT(4)
 #define LIS3DH_LPEN							BIT(3)
 #define LIS3DH_ZEN							BIT(2)
 #define LIS3DH_YEN							BIT(1)
 #define LIS3DH_XEN							BIT(0)
-
+#define LIS3DH_REG1_INIT				0x77
 //CONTROL REGISTER 2
 #define LIS3DH_CTRL_REG2				0x21
-#define LIS3DH_HPM     				BIT(6)
-#define LIS3DH_HPCF					BIT(4)
-#define LIS3DH_FDS					BIT(3)
+#define LIS3DH_HPM     					BIT(6)
+#define LIS3DH_HPCF							BIT(4)
+#define LIS3DH_FDS							BIT(3)
 #define LIS3DH_HPCLICK					BIT(2)
-#define LIS3DH_HPIS2					BIT(1)
-#define LIS3DH_HPIS1					BIT(0)
-
-//CONTROL REGISTER 3
+#define LIS3DH_HPIS2						BIT(1)
+#define LIS3DH_HPIS1						BIT(0)
+#define LIS3DH_REG2_INIT				0x00
+//CONTROL REGISTER 3 (interrupt)
 #define LIS3DH_CTRL_REG3				0x22
-#define LIS3DH_I1_CLICK				BIT(7)
+#define LIS3DH_I1_CLICK					BIT(7)
 #define LIS3DH_I1_AOI1					BIT(6)
-#define LIS3DH_I1_AOI2				        BIT(5)
-#define LIS3DH_I1_DRDY1				BIT(4)
-#define LIS3DH_I1_DRDY2				BIT(3)
-#define LIS3DH_I1_WTM					BIT(2)
+#define LIS3DH_I1_AOI2				  BIT(5)
+#define LIS3DH_I1_DRDY1					BIT(4)
+#define LIS3DH_I1_DRDY2					BIT(3)
+#define LIS3DH_I1_WTM						BIT(2)
 #define LIS3DH_I1_ORUN					BIT(1)
-
-//CONTROL REGISTER 6
-#define LIS3DH_CTRL_REG6				0x25
-#define LIS3DH_I2_CLICK				BIT(7)
-#define LIS3DH_I2_INT1					BIT(6)
-#define LIS3DH_I2_BOOT         			BIT(4)
-#define LIS3DH_H_LACTIVE				BIT(1)
-
-
-
+#define LIS3DH_REG3_INIT				0x50
 //CONTROL REGISTER 4
 #define LIS3DH_CTRL_REG4				0x23
-#define LIS3DH_BDU					BIT(7)
-#define LIS3DH_BLE					BIT(6)
-#define LIS3DH_FS					BIT(4)
-#define LIS3DH_HR					BIT(3)
+#define LIS3DH_BDU							BIT(7)
+#define LIS3DH_BLE							BIT(6)
+#define LIS3DH_FS								BIT(4)
+#define LIS3DH_HR								BIT(3)
 #define LIS3DH_ST       				BIT(1)
-#define LIS3DH_SIM					BIT(0)
-
+#define LIS3DH_SIM							BIT(0)
+#define LIS3DH_REG4_INIT				0x00
 //CONTROL REGISTER 5
 #define LIS3DH_CTRL_REG5				0x24
-#define LIS3DH_BOOT                                    BIT(7)
-#define LIS3DH_FIFO_EN                                 BIT(6)
-#define LIS3DH_LIR_INT1                                BIT(3)
-#define LIS3DH_D4D_INT1                                BIT(2)
+#define LIS3DH_BOOT             BIT(7)
+#define LIS3DH_FIFO_EN          BIT(6)
+#define LIS3DH_LIR_INT1         BIT(3)
+#define LIS3DH_D4D_INT1         BIT(2)
+#define LIS3DH_REG5_INIT				0x40
+//CONTROL REGISTER 6
+#define LIS3DH_CTRL_REG6				0x25
+#define LIS3DH_I2_CLICK					BIT(7)
+#define LIS3DH_I2_INT1					BIT(6)
+#define LIS3DH_I2_BOOT         	BIT(4)
+#define LIS3DH_H_LACTIVE				BIT(1)
+#define LIS3DH_REG6_INIT				0x02
 
 //REFERENCE/DATA_CAPTURE
-#define LIS3DH_REFERENCE_REG		                0x26
-#define LIS3DH_REF		                	BIT(0)
+#define LIS3DH_REFERENCE_REG		0x26
+#define LIS3DH_REF		         	BIT(0)
 
 //STATUS_REG_AXIES
 #define LIS3DH_STATUS_REG				0x27
@@ -291,10 +297,23 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_ZDA                                     BIT(2)
 #define LIS3DH_YDA                                     BIT(1)
 #define LIS3DH_XDA                                     BIT(0)
+//OUTPUT REGISTER
+#define LIS3DH_OUT_X_L					0x28
+#define LIS3DH_OUT_X_H					0x29
+#define LIS3DH_OUT_Y_L					0x2A
+#define LIS3DH_OUT_Y_H					0x2B
+#define LIS3DH_OUT_Z_L					0x2C
+#define LIS3DH_OUT_Z_H					0x2D
+//FIFO CONTROL REGISTER
+#define LIS3DH_FIFO_CTRL_REG    0x2E
+#define LIS3DH_FM                                      BIT(6)
+#define LIS3DH_TR                                      BIT(5)
+#define LIS3DH_FTH                                     BIT(0)
 
+#define LIS3DH_FIFO_SRC_REG			0x2F
 
 //INTERRUPT 1 CONFIGURATION
-#define LIS3DH_INT1_CFG				0x30
+#define LIS3DH_INT1_CFG					0x30
 #define LIS3DH_ANDOR                                   BIT(7)
 #define LIS3DH_INT_6D                                  BIT(6)
 #define LIS3DH_ZHIE                                    BIT(5)
@@ -304,14 +323,22 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_XHIE                                    BIT(1)
 #define LIS3DH_XLIE                                    BIT(0)
 
-//INTERRUPT 2 CONFIGURATION
-#define LIS3DH_INT2_CFG				0x34
 
-//FIFO CONTROL REGISTER
-#define LIS3DH_FIFO_CTRL_REG                           0x2E
-#define LIS3DH_FM                                      BIT(6)
-#define LIS3DH_TR                                      BIT(5)
-#define LIS3DH_FTH                                     BIT(0)
+//INTERRUPT 1 SOURCE REGISTER
+#define LIS3DH_INT1_SRC					0x31
+
+//INT1 REGISTERS
+#define LIS3DH_INT1_THS         0x32
+#define LIS3DH_INT1_DURATION    0x33
+//INTERRUPT 2 CONFIGURATION
+#define LIS3DH_INT2_CFG					0x34
+
+//INTERRUPT 1 SOURCE REGISTER
+#define LIS3DH_INT2_SRC					0x35
+
+//INT1 REGISTERS
+#define LIS3DH_INT2_THS         0x36
+#define LIS3DH_INT2_DURATION    0x37
 
 //CONTROL REG3 bit mask
 #define LIS3DH_CLICK_ON_PIN_INT1_ENABLE                0x80
@@ -366,19 +393,6 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_INT1_SRC_XH                             0x02
 #define LIS3DH_INT1_SRC_XL                             0x01
 
-//INT1 REGISTERS
-#define LIS3DH_INT1_THS                                0x32
-#define LIS3DH_INT1_DURATION                           0x33
-
-//INTERRUPT 1 SOURCE REGISTER
-#define LIS3DH_INT1_SRC				0x31
-
-//INT1 REGISTERS
-#define LIS3DH_INT2_THS                                0x36
-#define LIS3DH_INT2_DURATION                           0x37
-
-//INTERRUPT 1 SOURCE REGISTER
-#define LIS3DH_INT2_SRC				0x35
 
 //FIFO Source Register bit Mask
 #define LIS3DH_FIFO_SRC_WTM                            0x80
@@ -418,13 +432,6 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_TIME_LATENCY                            0x3C
 #define LIS3DH_TIME_WINDOW                             0x3D
 
-//OUTPUT REGISTER
-#define LIS3DH_OUT_X_L					0x28
-#define LIS3DH_OUT_X_H					0x29
-#define LIS3DH_OUT_Y_L					0x2A
-#define LIS3DH_OUT_Y_H					0x2B
-#define LIS3DH_OUT_Z_L					0x2C
-#define LIS3DH_OUT_Z_H					0x2D
 
 
 //STATUS REGISTER bit mask
@@ -458,21 +465,6 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_STATUS_AUX_1DA                           0x01
 
 
-//FIFO REGISTERS
-#define LIS3DH_FIFO_CTRL_REG			        0x2E
-#define LIS3DH_FIFO_SRC_REG			        	0x2F
-
-
-/* Exported macro ------------------------------------------------------------*/
-
-#ifndef __SHARED__MACROS
-
-#define __SHARED__MACROS
-//#define ValBit(VAR,Place)         (VAR & (1<<Place))
-#define BIT(x) ( (x) )
-
-#endif 
-/*__SHARED__MACROS*/
 
 /* Exported functions --------------------------------------------------------*/
 void SPI_Mems_Write_Reg(u8_t WriteAddr,u8_t Data);

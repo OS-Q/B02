@@ -1,3 +1,5 @@
+#ifndef __CONST_VAR_H
+#define __CONST_VAR_H
 
 
 extern uint8_t  WhoAmI ;         /*variável responsável por ler o registrador WHO_AM_I*/
@@ -29,3 +31,4 @@ extern uint8_t  MEMS_data_ready ;    /*variável responsável por informar que os 
 extern uint16_t  Count_ms ;   				/*variável responsável pelo delay*/
 extern uint16_t  DataReady ;   				  /*variável responsável pela indicação de ODReady*/
 
+#endif

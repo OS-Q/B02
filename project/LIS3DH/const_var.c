@@ -1,6 +1,7 @@
+
 #include "stm32f0xx_hal.h"
 #include "lis3dh_driver.h"
-//Acelerometro - variáveis de dados e registradores
+
 uint8_t  WhoAmI ;         /*variável responsável por ler o registrador WHO_AM_I*/
 uint8_t  OutXL  ;         /*variável responsável por ler o registrador OUT_X_L*/
 uint8_t  OutXH  ;         /*variável responsável por ler o registrador OUT_X_H*/

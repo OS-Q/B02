@@ -149,6 +149,9 @@ int main(void)
 			printf("LIS3DH_GetAngle :%f\n",Angulo);
 			printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		}
+		/* USER CODE END WHILE */
+		//LIS3DH_GetTempRaw(&buf);
+		
     /* USER CODE END WHILE */
 		LIS3DH_GetTempRaw(&buf);
 		printf("TempRaw :%X\n",buf);
@@ -164,6 +167,10 @@ int main(void)
     /* USER CODE END WHILE */
 		HAL_Delay(1000);
 		HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
+		ID=0x00;
+		buff=0x00;	
+		buf=0x00;	
+		printf("\n");
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

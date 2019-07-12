@@ -17,13 +17,13 @@
 
 #ifdef HAL_MODE_IIC
 extern I2C_HandleTypeDef hi2c1;
-#define HAL_IIC hi2c1
-#define IIC_ADDR 0X30
-#endif
-
-#ifdef HAL_MODE_SPI
+#define HAL_IIC 	hi2c1
+#define IIC_ADDR 	0X30
+#else
 extern SPI_HandleTypeDef hspi1;
 #endif
+
+#define DEBUG 1
 //#include "spi.h"
 /* Private typedef -----------------------------------------------------------*/
 typedef unsigned          char u8;
@@ -88,12 +88,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == INT1_Pin)
 	{
 		LIS3DH_INT1_ISR();
+#if 	DEBUG
 		printf("LIS3DH_INT1_ISR\n");
+#endif
 	}
 	if(GPIO_Pin == INT2_Pin)
 	{
 		LIS3DH_INT2_ISR();
+#if 	DEBUG
 		printf("LIS3DH_INT2_ISR\n");
+#endif
 	}
 }
 /*******************************************************************************
@@ -405,7 +409,7 @@ status_t LIS3DH_GetTempRaw(i8_t* buff) {
   
   if( !LIS3DH_ReadReg(LIS3DH_OUT_3_H, &valueH) )
     return MEMS_ERROR;
-  
+  //printf("Temp:H %X L %X\n",valueH,valueL);
   *buff = (i8_t)( valueH );
   
   return MEMS_SUCCESS;  

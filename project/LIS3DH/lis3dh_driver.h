@@ -242,8 +242,8 @@ LIS3DH_NO_CLICK                        =               0x00
 
 //TEMPERATURE CONFIG REGISTER
 #define LIS3DH_TEMP_CFG_REG				0x1F
-#define LIS3DH_ADC_PD				        BIT(7)
-#define LIS3DH_TEMP_EN					BIT(6)
+#define LIS3DH_ADC_PD				      BIT(7)
+#define LIS3DH_TEMP_EN						BIT(6)
 
 //CONTROL REGISTER 4
 #define LIS3DH_CTRL_REG4				0x23

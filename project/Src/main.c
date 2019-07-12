@@ -161,8 +161,6 @@ int main(void)
 		printf("StatusAUX :%X\n",buff);
 		LIS3DH_GetFifoSourceReg(&buff);
 		printf("FifoSourceReg :%X\n",buff);
-		HAL_I2C_Mem_Read(&hi2c1, LIS3DH_I2C_ADDRESS,LIS3DH_CTRL_REG0,1, &buff, 1, 1000);
-		printf("0X1E :%X\n",buff);
 		LIS3DH_GetClickResponse(&buff);
 		printf("GetClickResponse :%X\n",buff);
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);

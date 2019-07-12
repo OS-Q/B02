@@ -132,7 +132,7 @@ int main(void)
   MX_RTC_Init();
 	LIS3DH_Init();
 	if(LIS3DH_WHO_NAME == WhoAmI) {
-		printf("Ctrl_reg :%X %X %X %X %X %X\n",Ctrl_reg1,Ctrl_reg2,Ctrl_reg3,Ctrl_reg4,Ctrl_reg5,Ctrl_reg6);
+		printf("ctrl_reg:%X %X %X %X %X %X %X \n",ctrl_reg[0],ctrl_reg[1],ctrl_reg[2],ctrl_reg[3],ctrl_reg[4],ctrl_reg[5],ctrl_reg[6]);
 		printf("int1_reg :%X %X %X\n",Int1_cfg,Int1_ths,Int1_dur);
 	}
 	LIS3DH_SetClickCFG(LIS3DH_XD_ENABLE|LIS3DH_YD_ENABLE);
@@ -157,7 +157,7 @@ int main(void)
     /* USER CODE END WHILE */
 		LIS3DH_GetTempRaw(&buf);
 		printf("TempRaw :%X\n",buf);
-		LIS3DH_GetAccAxesRaw(&leitura);
+		//LIS3DH_GetAccAxesRaw(&leitura);
 		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		LIS3DH_GetStatusAUX(&buff);
 		printf("StatusAUX :%X\n",buff);

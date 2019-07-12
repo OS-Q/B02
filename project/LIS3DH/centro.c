@@ -35,6 +35,7 @@ void LIS3DH_Init(void)
 {
 	//Inicializa o acelerometro
 	LIS3DH_config();
+	LIS3DH_info();
 }
 
 
@@ -70,14 +71,30 @@ void LIS3DH_config(void)
 	LIS3DH_WriteReg(0X3E, 0x00);	
 	LIS3DH_WriteReg(0X3F, 0x00);	
 	
+//#ifdef READ_LISD_REG	
+//	LIS3DH_GetWHO_AM_I(&WhoAmI);
+//  LIS3DH_ReadReg(LIS3DH_CTRL_REG1 ,&Ctrl_reg1);
+//	LIS3DH_ReadReg(LIS3DH_CTRL_REG2 ,&Ctrl_reg2);
+//	LIS3DH_ReadReg(LIS3DH_CTRL_REG3 ,&Ctrl_reg3);
+//	LIS3DH_ReadReg(LIS3DH_CTRL_REG4 ,&Ctrl_reg4);
+//	LIS3DH_ReadReg(LIS3DH_CTRL_REG5 ,&Ctrl_reg5);
+//	LIS3DH_ReadReg(LIS3DH_CTRL_REG6 ,&Ctrl_reg6);
+//	LIS3DH_ReadReg(LIS3DH_INT1_CFG ,&Int1_cfg);
+//	LIS3DH_ReadReg(LIS3DH_INT1_THS ,&Int1_ths);
+//	LIS3DH_ReadReg(LIS3DH_INT1_DURATION ,&Int1_dur);	
+//#endif	
+}
+void LIS3DH_info(void)
+{	
 #ifdef READ_LISD_REG	
 	LIS3DH_GetWHO_AM_I(&WhoAmI);
-  LIS3DH_ReadReg(LIS3DH_CTRL_REG1 ,&Ctrl_reg1);
-	LIS3DH_ReadReg(LIS3DH_CTRL_REG2 ,&Ctrl_reg2);
-	LIS3DH_ReadReg(LIS3DH_CTRL_REG3 ,&Ctrl_reg3);
-	LIS3DH_ReadReg(LIS3DH_CTRL_REG4 ,&Ctrl_reg4);
-	LIS3DH_ReadReg(LIS3DH_CTRL_REG5 ,&Ctrl_reg5);
-	LIS3DH_ReadReg(LIS3DH_CTRL_REG6 ,&Ctrl_reg6);
+	LIS3DH_ReadReg(LIS3DH_CTRL_REG0 ,ctrl_reg);
+  LIS3DH_ReadReg(LIS3DH_CTRL_REG1 ,ctrl_reg+1);
+	LIS3DH_ReadReg(LIS3DH_CTRL_REG2 ,ctrl_reg+2);
+	LIS3DH_ReadReg(LIS3DH_CTRL_REG3 ,ctrl_reg+3);
+	LIS3DH_ReadReg(LIS3DH_CTRL_REG4 ,ctrl_reg+4);
+	LIS3DH_ReadReg(LIS3DH_CTRL_REG5 ,ctrl_reg+5);
+	LIS3DH_ReadReg(LIS3DH_CTRL_REG6 ,ctrl_reg+6);
 	LIS3DH_ReadReg(LIS3DH_INT1_CFG ,&Int1_cfg);
 	LIS3DH_ReadReg(LIS3DH_INT1_THS ,&Int1_ths);
 	LIS3DH_ReadReg(LIS3DH_INT1_DURATION ,&Int1_dur);	

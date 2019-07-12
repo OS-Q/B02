@@ -66,7 +66,7 @@
 #define ABRE                GPIOB,GPIO_PIN_7
 #define ABRE_SENSIBILIDADE  EXTI_PORT_GPIOB,EXTI_SENSITIVITY_FALL_LOW
 
-
+void LIS3DH_info(void);
 void LIS3DH_config(void);
 void LIS3DH_Init(void);
 void LIS3DH_INT1_ISR(void);

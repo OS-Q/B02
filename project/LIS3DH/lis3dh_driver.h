@@ -289,14 +289,14 @@ LIS3DH_NO_CLICK                        =               0x00
 
 //STATUS_REG_AXIES
 #define LIS3DH_STATUS_REG				0x27
-#define LIS3DH_ZYXOR                                   BIT(7)
-#define LIS3DH_ZOR                                     BIT(6)
-#define LIS3DH_YOR                                     BIT(5)
-#define LIS3DH_XOR                                     BIT(4)
-#define LIS3DH_ZYXDA                                   BIT(3)
-#define LIS3DH_ZDA                                     BIT(2)
-#define LIS3DH_YDA                                     BIT(1)
-#define LIS3DH_XDA                                     BIT(0)
+#define LIS3DH_ZYXOR            BIT(7)
+#define LIS3DH_ZOR              BIT(6)
+#define LIS3DH_YOR              BIT(5)
+#define LIS3DH_XOR              BIT(4)
+#define LIS3DH_ZYXDA            BIT(3)
+#define LIS3DH_ZDA              BIT(2)
+#define LIS3DH_YDA              BIT(1)
+#define LIS3DH_XDA              BIT(0)
 //OUTPUT REGISTER
 #define LIS3DH_OUT_X_L					0x28
 #define LIS3DH_OUT_X_H					0x29

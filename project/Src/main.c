@@ -157,6 +157,8 @@ int main(void)
     /* USER CODE END WHILE */
 		LIS3DH_GetTempRaw(&buf);
 		printf("TempRaw :%X\n",buf);
+		LIS3DH_GetAccAxesRaw(&leitura);
+		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		LIS3DH_GetStatusAUX(&buff);
 		printf("StatusAUX :%X\n",buff);
 		LIS3DH_GetFifoSourceReg(&buff);

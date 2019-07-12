@@ -2,14 +2,14 @@
 #include "stm32f0xx_hal.h"
 #include "lis3dh_driver.h"
 
-uint8_t  WhoAmI ;         /*variável responsável por ler o registrador WHO_AM_I*/
-uint8_t  OutXL  ;         /*variável responsável por ler o registrador OUT_X_L*/
-uint8_t  OutXH  ;         /*variável responsável por ler o registrador OUT_X_H*/
-uint8_t  OutYL  ;         /*variável responsável por ler o registrador OUT_Y_L*/
-uint8_t  OutYH  ;         /*variável responsável por ler o registrador OUT_Y_H*/
-uint8_t  OutZL  ;         /*variável responsável por ler o registrador OUT_Z_L*/
-uint8_t  OutZH  ;         /*variável responsável por ler o registrador OUT_Z_H*/
-uint8_t  StatusReg  ;     /*variável responsável por ler o registrador STATUS_REG2*/
+uint8_t  WhoAmI ; 
+uint8_t  OutXL  ;       
+uint8_t  OutXH  ; 
+uint8_t  OutYL  ;      
+uint8_t  OutYH  ;      
+uint8_t  OutZL  ;      
+uint8_t  OutZH  ;        
+uint8_t  StatusReg  ;   
 uint8_t  Ctrl_reg1;
 uint8_t  Ctrl_reg2;
 uint8_t  Ctrl_reg3;

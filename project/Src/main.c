@@ -117,6 +117,7 @@ int main(void)
 	//uint8_t TST=0x55;
 	//uint8_t ID=0x00;
 	uint8_t buff=0x00;	
+	uint8_t lan[32];
 	i8_t buf=0x00;
 
   /* USER CODE END SysInit */
@@ -137,7 +138,7 @@ int main(void)
 	}
 	LIS3DH_SetClickCFG(LIS3DH_XD_ENABLE|LIS3DH_YD_ENABLE);
   /* USER CODE BEGIN 2 */
-//	HAL_I2C_Mem_Read(&hi2c1, 0X30,0X1E,1, &buff, 1, 1000);
+	
 	//HAL_I2C_Mem_Write(&hi2c1, 0X30,0X22,1, &TST, 1, 1000);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -164,6 +165,8 @@ int main(void)
 		//LIS3DH_GetFifoSourceReg(&buff);
 		LIS3DH_GetFifoSourceFSS(&buff);
 		printf("FifoSourceFSS :%X\n",buff);
+		if(buff>1)HAL_I2C_Mem_Read(&hi2c1, 0XB0,0X2B,1,lan, buff, 1000);
+		while(buff--) printf("Fifo:%X\n",lan[buff]);
 		LIS3DH_GetClickResponse(&buff);
 		printf("GetClickResponse :%X\n",buff);
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);

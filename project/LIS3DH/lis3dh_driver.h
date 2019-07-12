@@ -310,7 +310,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_FM               BIT(6)
 #define LIS3DH_TR               BIT(5)
 #define LIS3DH_FTH              BIT(0)
-#define LIS3DH_FIFO_CTRL_INIT		0x40
+#define LIS3DH_FIFO_CTRL_INIT		(0x01<<LIS3DH_FM | 0<<LIS3DH_TR | 0x1f<<LIS3DH_FTH)
 
 //FIFO SRC REGISTER (R)
 #define LIS3DH_FIFO_SRC_REG			0x2F
@@ -325,7 +325,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_YLIE             BIT(2)
 #define LIS3DH_XHIE             BIT(1)
 #define LIS3DH_XLIE             BIT(0)
-#define LIS3DH_INT1_CTRL_INIT		( 0<<LIS3DH_ANDOR | 1<<LIS3DH_ZHIE | 1<<LIS3DH_YHIE | 1<<LIS3DH_XHIE)
+#define LIS3DH_INT1_CTRL_INIT		(0<<LIS3DH_ANDOR | 1<<LIS3DH_ZHIE | 1<<LIS3DH_YHIE | 1<<LIS3DH_XHIE)
 
 //INTERRUPT 1 SOURCE REGISTER (R)
 #define LIS3DH_INT1_SRC					0x31

@@ -148,12 +148,12 @@ int main(void)
 		{
 			DataReady = 0;
 			//Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
-			printf("LIS3DH_GetAngle :%f\n",Angulo);
-			printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
+			//printf("LIS3DH_GetAngle :%f\n",Angulo);
+			printf("DataReady :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		}
 		/* USER CODE END WHILE */
 		//LIS3DH_GetTempRaw(&buf);
-		if (LIS3DH_GetInt1Src(&buff))	printf("LIS3DH_GetInt1Src :%X\n",buff);
+		//if (LIS3DH_GetInt1Src(&buff))	printf("LIS3DH_GetInt1Src :%X\n",buff);
     /* USER CODE END WHILE */
 		LIS3DH_GetTempRaw(&buf);
 		printf("TempRaw :%X\n",buf);
@@ -161,8 +161,9 @@ int main(void)
 		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		LIS3DH_GetStatusAUX(&buff);
 		printf("StatusAUX :%X\n",buff);
-		LIS3DH_GetFifoSourceReg(&buff);
-		printf("FifoSourceReg :%X\n",buff);
+		//LIS3DH_GetFifoSourceReg(&buff);
+		LIS3DH_GetFifoSourceFSS(&buff);
+		printf("FifoSourceFSS :%X\n",buff);
 		LIS3DH_GetClickResponse(&buff);
 		printf("GetClickResponse :%X\n",buff);
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);

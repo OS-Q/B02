@@ -232,6 +232,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_TEMP_CFG_REG			0x1F
 #define LIS3DH_ADC_PD				   	BIT(7)
 #define LIS3DH_TEMP_EN					BIT(6)
+#define LIS3DH_TEMP_INIT				(1<<LIS3DH_ADC_PD | 1<<LIS3DH_TEMP_EN)
 // CONTROL REGISTER 1 (RW)
 #define LIS3DH_CTRL_REG1				0x20
 #define LIS3DH_ODR_BIT				  BIT(4)
@@ -239,7 +240,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_ZEN							BIT(2)
 #define LIS3DH_YEN							BIT(1)
 #define LIS3DH_XEN							BIT(0)
-#define LIS3DH_REG1_INIT				(LIS3DH_ODR_200Hz<<LIS3DH_ODR_BIT | 0<<LIS3DH_LPEN | 0<<LIS3DH_ZEN | 0<<LIS3DH_YEN | 1<<LIS3DH_XEN)
+#define LIS3DH_REG1_INIT				(LIS3DH_ODR_400Hz<<LIS3DH_ODR_BIT | 0<<LIS3DH_LPEN | 1<<LIS3DH_ZEN | 1<<LIS3DH_YEN | 1<<LIS3DH_XEN)
 //CONTROL REGISTER 2
 #define LIS3DH_CTRL_REG2				0x21
 #define LIS3DH_HPM     					BIT(6)
@@ -248,7 +249,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_HPCLICK					BIT(2)
 #define LIS3DH_HPIS2						BIT(1)
 #define LIS3DH_HPIS1						BIT(0)
-#define LIS3DH_REG2_INIT				0x00
+#define LIS3DH_REG2_INIT				( 0<<LIS3DH_FDS | 1<<LIS3DH_HPCLICK | 1<<LIS3DH_HPIS2 | 1<<LIS3DH_HPIS1)
 //CONTROL REGISTER 3 (interrupt)
 #define LIS3DH_CTRL_REG3				0x22
 #define LIS3DH_I1_CLICK					BIT(7)
@@ -258,7 +259,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_I1_DRDY2					BIT(3)
 #define LIS3DH_I1_WTM						BIT(2)
 #define LIS3DH_I1_ORUN					BIT(1)
-#define LIS3DH_REG3_INIT				0x50
+#define LIS3DH_REG3_INIT				( 0<<LIS3DH_I1_CLICK | 1<<LIS3DH_I1_AOI1 | 0<<LIS3DH_I1_AOI2 | 0<<LIS3DH_I1_DRDY1 | 0<<LIS3DH_I1_DRDY2 | 0<<LIS3DH_I1_WTM | 1<<LIS3DH_I1_ORUN)
 //CONTROL REGISTER 4
 #define LIS3DH_CTRL_REG4				0x23
 #define LIS3DH_BDU							BIT(7)
@@ -324,14 +325,16 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_YLIE             BIT(2)
 #define LIS3DH_XHIE             BIT(1)
 #define LIS3DH_XLIE             BIT(0)
-#define LIS3DH_INT1_CTRL_INIT		0x40
+#define LIS3DH_INT1_CTRL_INIT		( 0<<LIS3DH_ANDOR | 1<<LIS3DH_ZHIE | 1<<LIS3DH_YHIE | 1<<LIS3DH_XHIE)
 
 //INTERRUPT 1 SOURCE REGISTER (R)
 #define LIS3DH_INT1_SRC					0x31
 
 //INT1 REGISTERS
 #define LIS3DH_INT1_THS         0x32
+#define LIS3DH_INT1_THS_DATA    0x10
 #define LIS3DH_INT1_DURATION    0x33
+#define LIS3DH_DURATION_TIME    0x00
 
 //INTERRUPT 2 CONFIGURATION
 #define LIS3DH_INT2_CFG					0x34

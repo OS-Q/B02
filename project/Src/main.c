@@ -131,7 +131,11 @@ int main(void)
   //MX_IWDG_Init();
   MX_RTC_Init();
 	LIS3DH_Init();
-	if(LIS3DH_WHO_NAME == WhoAmI) printf("Ctrl_reg :%X %X %X %X %X %X\n",Ctrl_reg1,Ctrl_reg2,Ctrl_reg3,Ctrl_reg4,Ctrl_reg5,Ctrl_reg6);
+	if(LIS3DH_WHO_NAME == WhoAmI) {
+		printf("Ctrl_reg :%X %X %X %X %X %X\n",Ctrl_reg1,Ctrl_reg2,Ctrl_reg3,Ctrl_reg4,Ctrl_reg5,Ctrl_reg6);
+		printf("int1_reg :%X %X %X\n",Int1_cfg,Int1_ths,Int1_dur);
+	}
+	LIS3DH_SetClickCFG(LIS3DH_XD_ENABLE|LIS3DH_YD_ENABLE);
   /* USER CODE BEGIN 2 */
 //	HAL_I2C_Mem_Read(&hi2c1, 0X30,0X1E,1, &buff, 1, 1000);
 	//HAL_I2C_Mem_Write(&hi2c1, 0X30,0X22,1, &TST, 1, 1000);
@@ -159,7 +163,8 @@ int main(void)
 		printf("FifoSourceReg :%X\n",buff);
 		HAL_I2C_Mem_Read(&hi2c1, LIS3DH_I2C_ADDRESS,LIS3DH_CTRL_REG0,1, &buff, 1, 1000);
 		printf("0X1E :%X\n",buff);
-		
+		LIS3DH_GetClickResponse(&buff);
+		printf("GetClickResponse :%X\n",buff);
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
 //		printf("LIS3DH_GetAngle :%f\n",Angulo);
 //		LIS3DH_GetAccAxesRaw(&leitura);

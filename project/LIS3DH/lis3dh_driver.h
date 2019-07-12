@@ -403,7 +403,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_FIFO_SRC_EMPTY                          0x20
   
 //INTERRUPT CLICK REGISTER
-#define LIS3DH_CLICK_CFG				0x38
+#define LIS3DH_CLICK_CFG					0x38
 //INTERRUPT CLICK CONFIGURATION bit mask
 #define LIS3DH_ZD_ENABLE                               0x20
 #define LIS3DH_ZD_DISABLE                              0x00

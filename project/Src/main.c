@@ -149,7 +149,7 @@ int main(void)
 		}
 		/* USER CODE END WHILE */
 		//LIS3DH_GetTempRaw(&buf);
-		
+		if (LIS3DH_GetInt1Src(&buff))	printf("LIS3DH_GetInt1Src :%X\n",buff);
     /* USER CODE END WHILE */
 		LIS3DH_GetTempRaw(&buf);
 		printf("TempRaw :%X\n",buf);
@@ -159,6 +159,7 @@ int main(void)
 		printf("FifoSourceReg :%X\n",buff);
 		HAL_I2C_Mem_Read(&hi2c1, LIS3DH_I2C_ADDRESS,LIS3DH_CTRL_REG0,1, &buff, 1, 1000);
 		printf("0X1E :%X\n",buff);
+		
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
 //		printf("LIS3DH_GetAngle :%f\n",Angulo);
 //		LIS3DH_GetAccAxesRaw(&leitura);

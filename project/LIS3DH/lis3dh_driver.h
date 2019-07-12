@@ -324,14 +324,15 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_YLIE             BIT(2)
 #define LIS3DH_XHIE             BIT(1)
 #define LIS3DH_XLIE             BIT(0)
+#define LIS3DH_INT1_CTRL_INIT		0x40
 
-
-//INTERRUPT 1 SOURCE REGISTER
+//INTERRUPT 1 SOURCE REGISTER (R)
 #define LIS3DH_INT1_SRC					0x31
 
 //INT1 REGISTERS
 #define LIS3DH_INT1_THS         0x32
 #define LIS3DH_INT1_DURATION    0x33
+
 //INTERRUPT 2 CONFIGURATION
 #define LIS3DH_INT2_CFG					0x34
 

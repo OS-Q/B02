@@ -1,9 +1,10 @@
+#include "main.h"
 #include "defines.h"
 #include "lis3dh_driver.h"
 #include <math.h>
 
 #define READ_LISD_REG 1
-#define Transf_graus 57.29578//180 graus dividido por pi
+#define Transf_graus 	57.29578			//180 graus dividido por pi
 
 float Angulo;
 extern AxesRaw_t leitura;

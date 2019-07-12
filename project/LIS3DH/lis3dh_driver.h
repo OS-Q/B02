@@ -1,26 +1,14 @@
-/******************** (C) COPYRIGHT 2012 STMicroelectronics ********************
-* File Name          : lis3dh_driver.h
-* Author             : MSH Application Team
-* Author             : Abhishek Anand, Fabio Tota
+/******************** (C) COPYRIGHT 2019 QITAS ********************
+* File Name          : LIS3DH_driver.c
+* Author             : QITAS
 * Version            : $Revision:$
 * Date               : $Date:$
-* Description        : Descriptor Header for lis3dh_driver.c driver file
-*
+* Description        : LIS3DH driver file
+*                      
 * HISTORY:
-* Date        | Modification                                | Author
-* 24/06/2011  | Initial Revision                            | Fabio Tota
-* 07/06/2012  | Support for multiple drivers in the same program | Abhishek Anand
-*
-********************************************************************************
-* THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-* WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE TIME.
-* AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY DIRECT,
-* INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING FROM THE
-* CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE CODING
-* INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-*
-* THIS SOFTWARE IS SPECIFICALLY DESIGNED FOR EXCLUSIVE USE WITH ST PARTS.
-*
+* Date               |	Modification                    |	Author
+* 12/07/2019         |	Initial Revision                |	QITAS
+
 *******************************************************************************/
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -30,16 +18,14 @@
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
 
-#define SPI_CS_Pin GPIO_PIN_1
-#define SPI_CS_GPIO_Port GPIOB
+#define SPI_CS_Pin 				CS_Pin
+#define SPI_CS_GPIO_Port 	CS_GPIO_Port
 
-#define INT1_Pin GPIO_PIN_0
-#define INT1_GPIO_Port GPIOA
-#define INT2_Pin GPIO_PIN_1
-#define INT2_GPIO_Port GPIOA
+#define INT1_Pin 				INIT1_Pin
+#define INT1_GPIO_Port 	INIT1_GPIO_Port
+#define INT2_Pin 				INIT2_Pin
+#define INT2_GPIO_Port 	INIT2_GPIO_Port
 
-#define LED_Pin GPIO_PIN_4
-#define LED_Port GPIOA
 //these could change accordingly with the architecture
 
 #ifndef __ARCHDEP__TYPES

@@ -1,5 +1,5 @@
 
-//Acelerometro - variáveis de dados e registradores
+
 extern uint8_t  WhoAmI ;         /*variável responsável por ler o registrador WHO_AM_I*/
 extern uint8_t  OutXL  ;         /*variável responsável por ler o registrador OUT_X_L*/
 extern uint8_t  OutXH  ;         /*variável responsável por ler o registrador OUT_X_H*/

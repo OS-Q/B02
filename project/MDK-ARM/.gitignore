@@ -1,0 +1,13 @@
+*.crf
+*.dep
+*.map
+*.hex
+*.bin
+*.bak
+*.lst
+*.uvgu*
+*.uvop*
+SPI/
+IIC/
+RTE/
+DebugConfig/

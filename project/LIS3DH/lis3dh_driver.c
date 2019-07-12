@@ -1,39 +1,27 @@
-/******************** (C) COPYRIGHT 2012 STMicroelectronics ********************
+/******************** (C) COPYRIGHT 2019 QITAS ********************
 * File Name          : LIS3DH_driver.c
-* Author             : MSH Application Team
-* Author             : Fabio Tota
+* Author             : QITAS
 * Version            : $Revision:$
 * Date               : $Date:$
 * Description        : LIS3DH driver file
 *                      
 * HISTORY:
 * Date               |	Modification                    |	Author
-* 24/06/2011         |	Initial Revision                |	Fabio Tota
-* 11/06/2012         |	Support for multiple drivers in the same program |	Abhishek Anand
+* 12/07/2019         |	Initial Revision                |	QITAS
 
-********************************************************************************
-* THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-* WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE TIME.
-* AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY DIRECT,
-* INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING FROM THE
-* CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE CODING
-* INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-*
-* THIS SOFTWARE IS SPECIFICALLY DESIGNED FOR EXCLUSIVE USE WITH ST PARTS.
-*
 *******************************************************************************/
 
 /* Includes ------------------------------------------------------------------*/
 #include "lis3dh_driver.h"
 #include "defines.h"
 
-#if  1
-#define HAL_MODE_IIC
+#ifdef HAL_MODE_IIC
 extern I2C_HandleTypeDef hi2c1;
 #define HAL_IIC hi2c1
 #define IIC_ADDR 0X30
-#else
-#define HAL_MODE_SPI
+#endif
+
+#ifdef HAL_MODE_SPI
 extern SPI_HandleTypeDef hspi1;
 #endif
 //#include "spi.h"
@@ -87,7 +75,27 @@ void SPI_Mems_Write_Reg(u8_t WriteAddr, u8_t Data)
 	MEMS_SendByte(Data);
 	HAL_GPIO_WritePin(SPI_CS_GPIO_Port,SPI_CS_Pin,GPIO_PIN_SET);
 }
+/*******************************************************************************
+* Function Name		: HAL_GPIO_EXTI_Callback
+* Description			: Generic Reading function	
+* Input			:
+* Output		: 
+* Return		: None
+*******************************************************************************/
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin == INT1_Pin)
+	{
+		LIS3DH_INT1_ISR();
+		printf("LIS3DH_INT1_ISR\n");
+	}
+	if(GPIO_Pin == INT2_Pin)
+	{
+		LIS3DH_INT2_ISR();
+		printf("LIS3DH_INT2_ISR\n");
+	}
+}
 /*******************************************************************************
 * Function Name		: LIS3DH_ReadReg
 * Description		: Generic Reading function. It must be fullfilled with either

@@ -163,25 +163,13 @@ int main(void)
 		//LIS3DH_SetADCAux(State_t state);
     /* USER CODE END WHILE */
 		HAL_Delay(1000);
-		HAL_GPIO_TogglePin(LED_Port,LED_Pin);
+		HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	if(GPIO_Pin == INT1_Pin)
-	{
-		LIS3DH_INT1_ISR();
-		//printf("LIS3DH_INT1_ISR\n");
-	}
-	if(GPIO_Pin == INT2_Pin)
-	{
-		LIS3DH_INT2_ISR();
-		//printf("LIS3DH_INT2_ISR\n");
-	}
-}
+
 /**
   * @brief System Clock Configuration
   * @retval None

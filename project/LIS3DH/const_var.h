@@ -11,12 +11,12 @@ extern uint8_t  OutZL  ;         /*variável responsável por ler o registrador OU
 extern uint8_t  OutZH  ;         /*variável responsável por ler o registrador OUT_Z_H*/
 extern uint8_t  StatusReg  ;     /*variável responsável por ler o registrador STATUS_REG2*/
 extern uint8_t  ctrl_reg[7];
-extern uint8_t  Ctrl_reg1;
-extern uint8_t  Ctrl_reg2;
-extern uint8_t  Ctrl_reg3;
-extern uint8_t  Ctrl_reg4;
-extern uint8_t  Ctrl_reg5;
-extern uint8_t  Ctrl_reg6;
+//extern uint8_t  Ctrl_reg1;
+//extern uint8_t  Ctrl_reg2;
+//extern uint8_t  Ctrl_reg3;
+//extern uint8_t  Ctrl_reg4;
+//extern uint8_t  Ctrl_reg5;
+//extern uint8_t  Ctrl_reg6;
 extern uint8_t Int1_dur;
 extern uint8_t Int1_ths;
 extern uint8_t Int1_cfg;

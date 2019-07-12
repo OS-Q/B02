@@ -74,13 +74,13 @@ typedef struct {
 
 typedef enum {  
   LIS3DH_ODR_1Hz		        =		0x01,		
-  LIS3DH_ODR_10Hz                      =		0x02,
+  LIS3DH_ODR_10Hz           =		0x02,
   LIS3DH_ODR_25Hz		        =		0x03,
   LIS3DH_ODR_50Hz		        =		0x04,
-  LIS3DH_ODR_100Hz		        =		0x05,	
-  LIS3DH_ODR_200Hz		        =		0x06,
-  LIS3DH_ODR_400Hz		        =		0x07,
-  LIS3DH_ODR_1620Hz_LP		        =		0x08,
+  LIS3DH_ODR_100Hz		      =		0x05,	
+  LIS3DH_ODR_200Hz		      =		0x06,
+  LIS3DH_ODR_400Hz		      =		0x07,
+  LIS3DH_ODR_1620Hz_LP		  =		0x08,
   LIS3DH_ODR_1344Hz_NP_5367HZ_LP       =		0x09	
 } LIS3DH_ODR_t;
 
@@ -239,7 +239,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_ZEN							BIT(2)
 #define LIS3DH_YEN							BIT(1)
 #define LIS3DH_XEN							BIT(0)
-#define LIS3DH_REG1_INIT				0x77
+#define LIS3DH_REG1_INIT				(LIS3DH_ODR_200Hz<<LIS3DH_ODR_BIT | 0<<LIS3DH_LPEN | 0<<LIS3DH_ZEN | 0<<LIS3DH_YEN | 1<<LIS3DH_XEN)
 //CONTROL REGISTER 2
 #define LIS3DH_CTRL_REG2				0x21
 #define LIS3DH_HPM     					BIT(6)

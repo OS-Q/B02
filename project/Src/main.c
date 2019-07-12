@@ -114,8 +114,8 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-	uint8_t TST=0x55;
-	uint8_t ID=0x00;
+	//uint8_t TST=0x55;
+	//uint8_t ID=0x00;
 	uint8_t buff=0x00;	
 	i8_t buf=0x00;
 
@@ -157,7 +157,7 @@ int main(void)
     /* USER CODE END WHILE */
 		LIS3DH_GetTempRaw(&buf);
 		printf("TempRaw :%X\n",buf);
-		//LIS3DH_GetAccAxesRaw(&leitura);
+		LIS3DH_GetAccAxesRaw(&leitura);
 		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		LIS3DH_GetStatusAUX(&buff);
 		printf("StatusAUX :%X\n",buff);
@@ -173,7 +173,6 @@ int main(void)
     /* USER CODE END WHILE */
 		HAL_Delay(1000);
 		HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
-		ID=0x00;
 		buff=0x00;	
 		buf=0x00;	
 		printf("\n");

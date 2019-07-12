@@ -42,9 +42,9 @@ void LIS3DH_Init(void)
 *  Inicializa o acelerometro
 **/
 void MEMS_Startup (void)
-{
-	LIS3DH_GetWHO_AM_I(&WhoAmI);
+{	
 	LIS3DH_WriteReg(LIS3DH_TEMP_CFG_REG, 0xC0);	
+	LIS3DH_WriteReg(LIS3DH_CTRL_REG0, 0x10);
 	LIS3DH_WriteReg(LIS3DH_CTRL_REG1, 0x57);
 	LIS3DH_WriteReg(LIS3DH_CTRL_REG2, 0x00);
 	LIS3DH_WriteReg(LIS3DH_CTRL_REG3, 0x50);
@@ -68,6 +68,7 @@ void MEMS_Startup (void)
 	LIS3DH_WriteReg(0X3F, 0x00);	
 	
 #ifdef READ_LISD_REG	
+	LIS3DH_GetWHO_AM_I(&WhoAmI);
   LIS3DH_ReadReg(LIS3DH_CTRL_REG1 ,&Ctrl_reg1);
 	LIS3DH_ReadReg(LIS3DH_CTRL_REG2 ,&Ctrl_reg2);
 	LIS3DH_ReadReg(LIS3DH_CTRL_REG3 ,&Ctrl_reg3);

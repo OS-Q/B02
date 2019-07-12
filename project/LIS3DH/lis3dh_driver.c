@@ -18,7 +18,7 @@
 #ifdef HAL_MODE_IIC
 extern I2C_HandleTypeDef hi2c1;
 #define HAL_IIC 	hi2c1
-#define IIC_ADDR 	0X30
+#define IIC_ADDR 	LIS3DH_MEMS_I2C_ADDRESS
 #else
 extern SPI_HandleTypeDef hspi1;
 #endif

@@ -203,17 +203,35 @@ LIS3DH_NO_CLICK                        =               0x00
 #endif /*__SHARED__CONSTANTS*/
 
 
-//Register Definition
-#define LIS3DH_WHO_AM_I				0x0F  // device identification register
-#define LIS3DH_WHO_NAME				0x33  
+#define LIS3DH_MEMS_I2C_ADDRESS			        0x30
 
+
+//Register Definition (R)
+#define LIS3DH_WHO_AM_I					0x0F  // device identification register
+#define LIS3DH_WHO_NAME					0x33  
+//STATUS_REG_AUX 		(R)
+#define LIS3DH_STATUS_AUX				0x07
+//AUX REGISTER 	(R)
+#define LIS3DH_OUT_1_L					0x08
+#define LIS3DH_OUT_1_H					0x09
+#define LIS3DH_OUT_2_L					0x0A
+#define LIS3DH_OUT_2_H					0x0B
+#define LIS3DH_OUT_3_L					0x0C
+#define LIS3DH_OUT_3_H					0x0D
+// CONTROL REGISTER 0	(RW)
+#define LIS3DH_CTRL_REG0				0x1E
+#define LIS3DH_REG0_INIT				0x10
+//TEMPERATURE CONFIG REGISTER (RW)
+#define LIS3DH_TEMP_CFG_REG			0x1F
+#define LIS3DH_ADC_PD				   	BIT(7)
+#define LIS3DH_TEMP_EN					BIT(6)
 // CONTROL REGISTER 1
 #define LIS3DH_CTRL_REG1				0x20
-#define LIS3DH_ODR_BIT				        BIT(4)
-#define LIS3DH_LPEN					BIT(3)
-#define LIS3DH_ZEN					BIT(2)
-#define LIS3DH_YEN					BIT(1)
-#define LIS3DH_XEN					BIT(0)
+#define LIS3DH_ODR_BIT				  BIT(4)
+#define LIS3DH_LPEN							BIT(3)
+#define LIS3DH_ZEN							BIT(2)
+#define LIS3DH_YEN							BIT(1)
+#define LIS3DH_XEN							BIT(0)
 
 //CONTROL REGISTER 2
 #define LIS3DH_CTRL_REG2				0x21
@@ -241,10 +259,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_I2_BOOT         			BIT(4)
 #define LIS3DH_H_LACTIVE				BIT(1)
 
-//TEMPERATURE CONFIG REGISTER
-#define LIS3DH_TEMP_CFG_REG				0x1F
-#define LIS3DH_ADC_PD				      BIT(7)
-#define LIS3DH_TEMP_EN						BIT(6)
+
 
 //CONTROL REGISTER 4
 #define LIS3DH_CTRL_REG4				0x23
@@ -277,8 +292,6 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_YDA                                     BIT(1)
 #define LIS3DH_XDA                                     BIT(0)
 
-//STATUS_REG_AUX
-#define LIS3DH_STATUS_AUX				0x07
 
 //INTERRUPT 1 CONFIGURATION
 #define LIS3DH_INT1_CFG				0x30
@@ -413,13 +426,6 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_OUT_Z_L					0x2C
 #define LIS3DH_OUT_Z_H					0x2D
 
-//AUX REGISTER
-#define LIS3DH_OUT_1_L					0x08
-#define LIS3DH_OUT_1_H					0x09
-#define LIS3DH_OUT_2_L					0x0A
-#define LIS3DH_OUT_2_H					0x0B
-#define LIS3DH_OUT_3_L					0x0C
-#define LIS3DH_OUT_3_H					0x0D
 
 //STATUS REGISTER bit mask
 #define LIS3DH_STATUS_REG_ZYXOR                        0x80    // 1	:	new data set has over written the previous one
@@ -451,11 +457,10 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_STATUS_AUX_2DA                           0x02
 #define LIS3DH_STATUS_AUX_1DA                           0x01
 
-#define LIS3DH_MEMS_I2C_ADDRESS			        0x30
 
 //FIFO REGISTERS
 #define LIS3DH_FIFO_CTRL_REG			        0x2E
-#define LIS3DH_FIFO_SRC_REG			        0x2F
+#define LIS3DH_FIFO_SRC_REG			        	0x2F
 
 
 /* Exported macro ------------------------------------------------------------*/

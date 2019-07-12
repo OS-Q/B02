@@ -306,22 +306,24 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_OUT_Z_H					0x2D
 //FIFO CONTROL REGISTER
 #define LIS3DH_FIFO_CTRL_REG    0x2E
-#define LIS3DH_FM                                      BIT(6)
-#define LIS3DH_TR                                      BIT(5)
-#define LIS3DH_FTH                                     BIT(0)
+#define LIS3DH_FM               BIT(6)
+#define LIS3DH_TR               BIT(5)
+#define LIS3DH_FTH              BIT(0)
+#define LIS3DH_FIFO_CTRL_INIT		0x40
 
+//FIFO SRC REGISTER (R)
 #define LIS3DH_FIFO_SRC_REG			0x2F
 
 //INTERRUPT 1 CONFIGURATION
 #define LIS3DH_INT1_CFG					0x30
-#define LIS3DH_ANDOR                                   BIT(7)
-#define LIS3DH_INT_6D                                  BIT(6)
-#define LIS3DH_ZHIE                                    BIT(5)
-#define LIS3DH_ZLIE                                    BIT(4)
-#define LIS3DH_YHIE                                    BIT(3)
-#define LIS3DH_YLIE                                    BIT(2)
-#define LIS3DH_XHIE                                    BIT(1)
-#define LIS3DH_XLIE                                    BIT(0)
+#define LIS3DH_ANDOR            BIT(7)
+#define LIS3DH_INT_6D           BIT(6)
+#define LIS3DH_ZHIE             BIT(5)
+#define LIS3DH_ZLIE             BIT(4)
+#define LIS3DH_YHIE             BIT(3)
+#define LIS3DH_YLIE             BIT(2)
+#define LIS3DH_XHIE             BIT(1)
+#define LIS3DH_XLIE             BIT(0)
 
 
 //INTERRUPT 1 SOURCE REGISTER

@@ -134,8 +134,6 @@ int main(void)
 	if(LIS3DH_WHO_NAME == WhoAmI) printf("Ctrl_reg :%X %X %X %X %X %X\n",Ctrl_reg1,Ctrl_reg2,Ctrl_reg3,Ctrl_reg4,Ctrl_reg5,Ctrl_reg6);
   /* USER CODE BEGIN 2 */
 //	HAL_I2C_Mem_Read(&hi2c1, 0X30,0X1E,1, &buff, 1, 1000);
-//	printf("0X1E :%X\n",buff);
-  /* USER CODE END 2 */
 	//HAL_I2C_Mem_Write(&hi2c1, 0X30,0X22,1, &TST, 1, 1000);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

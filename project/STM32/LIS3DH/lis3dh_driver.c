@@ -1495,8 +1495,7 @@ status_t LIS3DH_GetAccAxesRaw(AxesRaw_t* buff) {
   
   if( !LIS3DH_ReadReg(LIS3DH_OUT_Y_H, &valueH) )
     return MEMS_ERROR;
-  value = (int_least16_t)(valueL + ( valueH << 8 ));
-  buff->AXIS_Y = value>>4;
+	  buff->AXIS_Y = (int_least16_t)((valueL>>4) + ( valueH << 4 ));
    printf("LIS3DH_GetAccAxesRaw :%X %X\n",valueH,valueL);
   if( !LIS3DH_ReadReg(LIS3DH_OUT_Z_L, &valueL) )
     return MEMS_ERROR;

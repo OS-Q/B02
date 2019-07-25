@@ -233,7 +233,7 @@ LIS3DH_NO_CLICK                        =               0x00
 
 #endif
 
-#define LIS3DH_FIFO			1
+#define LIS3DH_FIFO			0
 #if LIS3DH_FIFO 
 #define FFBIT		(1)
 #else
@@ -298,7 +298,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_HR								BIT(3)
 #define LIS3DH_ST       				BIT(1)
 #define LIS3DH_SIM							BIT(0)
-#define LIS3DH_REG4_INIT				( 0<<LIS3DH_BDU | 0<<LIS3DH_BLE | 0<<LIS3DH_FS | HRBIT<<LIS3DH_HR | 1<<LIS3DH_ST  | 0<<LIS3DH_SIM)	//0x00
+#define LIS3DH_REG4_INIT				( 0<<LIS3DH_BDU | 0<<LIS3DH_BLE | 1<<LIS3DH_FS | HRBIT<<LIS3DH_HR | 0<<LIS3DH_ST  | 0<<LIS3DH_SIM)	//0x00
 //CONTROL REGISTER 5
 #define LIS3DH_CTRL_REG5				0x24
 #define LIS3DH_BOOT             BIT(7)

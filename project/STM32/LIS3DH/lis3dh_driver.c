@@ -114,7 +114,7 @@ u8_t LIS3DH_ReadReg(u8_t Reg, u8_t* Data) {
 #ifdef HAL_MODE_IIC
   HAL_I2C_Mem_Read(&HAL_IIC,IIC_ADDR,Reg,1, Data, 1, 1000);
 #else
-  *Data = SPI_Mems_Read_Reg( Reg );  
+  *Data = SPI_Mems_Read_Reg(Reg);  
 #endif
   return 1;
 }

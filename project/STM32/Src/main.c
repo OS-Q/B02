@@ -121,7 +121,8 @@ int main(void)
 	i8_t buf=0x00;
 
   /* USER CODE END SysInit */
-
+  MX_IWDG_Init();
+	HAL_IWDG_Refresh(&hiwdg);
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
@@ -129,7 +130,6 @@ int main(void)
   MX_USART1_UART_Init();
   MX_SPI1_Init();
   MX_CRC_Init();
-  //MX_IWDG_Init();
   MX_RTC_Init();
 	LIS3DH_Init();
 	if(LIS3DH_WHO_NAME == WhoAmI) {
@@ -144,7 +144,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		HAL_IWDG_Refresh(&hiwdg);
+		//HAL_I2C_Mem_Read(&hi2c1, LIS3DH_I2C_ADDRESS,LIS3DH_WHO_AM_I,1, &buff, 1, 1000);
+		//HAL_I2C_Mem_Read(&hi2c1, 0X30,0X22,1, &TST, 1, 1000);
+		LIS3DH_GetWHO_AM_I(&buff);
+		printf("WHO_AM_I :%X\n",buff);
     /* USER CODE END WHILE */
+		
 		if(DataReady)
 		{
 			DataReady = 0;
@@ -165,8 +171,8 @@ int main(void)
 		//LIS3DH_GetFifoSourceReg(&buff);
 		LIS3DH_GetFifoSourceFSS(&buff);
 		printf("FifoSourceFSS :%X\n",buff);
-		if(buff>1)HAL_I2C_Mem_Read(&hi2c1, 0XB0,0X2B,1,lan, buff, 1000);
-		while(buff--) printf("Fifo %X:%X ",buff,lan[buff]);
+		//if(buff>1)HAL_I2C_Mem_Read(&hi2c1, 0XB0,0X2B,1,lan, buff, 1000);
+		//while(buff--) printf("Fifo %X:%X ",buff,lan[buff]);
 		LIS3DH_GetClickResponse(&buff);
 		printf("GetClickResponse :%X\n",buff);
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
@@ -175,7 +181,7 @@ int main(void)
 //		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		//LIS3DH_SetADCAux(State_t state);
     /* USER CODE END WHILE */
-		HAL_Delay(1000);
+		HAL_Delay(3000);
 		HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
 		buff=0x00;	
 		buf=0x00;	
@@ -326,7 +332,7 @@ static void MX_IWDG_Init(void)
 
   /* USER CODE END IWDG_Init 1 */
   hiwdg.Instance = IWDG;
-  hiwdg.Init.Prescaler = IWDG_PRESCALER_4;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_64;
   hiwdg.Init.Window = 4095;
   hiwdg.Init.Reload = 4095;
   if (HAL_IWDG_Init(&hiwdg) != HAL_OK)

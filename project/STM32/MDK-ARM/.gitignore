@@ -9,5 +9,6 @@
 *.uvop*
 SPI/
 IIC/
+obj/
 RTE/
 DebugConfig/

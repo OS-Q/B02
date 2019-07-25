@@ -48,8 +48,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>IIC\</OutputDirectory>
-          <OutputName>IIC</OutputName>
+          <OutputDirectory>.\obj\</OutputDirectory>
+          <OutputName>SPI</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -82,7 +82,7 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>fromelf  --bin -o  ./IIC/IIC.bin ./IIC/IIC.axf</UserProg1Name>
+            <UserProg1Name>fromelf  --bin -o  ./SPI.bin ./obj/SPI.axf</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -887,7 +887,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F030x6,USE_HAL_DRIVER,STM32F030x6,HAL_MODE_IIC</Define>
+              <Define>USE_HAL_DRIVER,STM32F030x6,HAL_MODE_IIC</Define>
               <Undefine></Undefine>
               <IncludePath>../Inc;../Drivers/STM32F0xx_HAL_Driver/Inc;../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../Drivers/CMSIS/Include;..\LIS3DH</IncludePath>
             </VariousControls>

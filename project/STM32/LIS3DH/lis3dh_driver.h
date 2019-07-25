@@ -212,6 +212,27 @@ LIS3DH_NO_CLICK                        =               0x00
 
 #define LIS3DH_I2C_ADDRESS			0x30
 
+#define LIS3DH_MODE			1
+#if LIS3DH_MODE ==1	
+#define LPBIT		(0)
+#define HRBIT		(1)
+#elif LIS3DH_MODE ==2
+#define LPBIT		(0)
+#define HRBIT		(0)
+#else
+#define LPBIT		(1)
+#define HRBIT		(0)
+#endif
+
+#define LIS3DH_ADC			1
+#if LIS3DH_ADC 
+#define ADBIT		(0)
+
+#else
+#define ADBIT		(1)
+
+#endif
+
 
 //Register Definition (R)
 #define LIS3DH_WHO_AM_I					0x0F  // device identification register
@@ -232,7 +253,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_TEMP_CFG_REG			0x1F
 #define LIS3DH_ADC_PD				   	BIT(7)
 #define LIS3DH_TEMP_EN					BIT(6)
-#define LIS3DH_TEMP_INIT				(1<<LIS3DH_ADC_PD | 1<<LIS3DH_TEMP_EN)
+#define LIS3DH_TEMP_INIT				(ADBIT<<LIS3DH_ADC_PD | 1<<LIS3DH_TEMP_EN)
 // CONTROL REGISTER 1 (RW)
 #define LIS3DH_CTRL_REG1				0x20
 #define LIS3DH_ODR_BIT				  BIT(4)
@@ -240,7 +261,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_ZEN							BIT(2)
 #define LIS3DH_YEN							BIT(1)
 #define LIS3DH_XEN							BIT(0)
-#define LIS3DH_REG1_INIT				(LIS3DH_ODR_400Hz<<LIS3DH_ODR_BIT | 0<<LIS3DH_LPEN | 1<<LIS3DH_ZEN | 1<<LIS3DH_YEN | 1<<LIS3DH_XEN)
+#define LIS3DH_REG1_INIT				(LIS3DH_ODR_100Hz<<LIS3DH_ODR_BIT | LPBIT<<LIS3DH_LPEN | 1<<LIS3DH_ZEN | 1<<LIS3DH_YEN | 1<<LIS3DH_XEN)
 //CONTROL REGISTER 2
 #define LIS3DH_CTRL_REG2				0x21
 #define LIS3DH_HPM     					BIT(6)
@@ -260,7 +281,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_I1_WTM						BIT(2)
 #define LIS3DH_I1_ORUN					BIT(1)
 #define LIS3DH_REG3_INIT				( 0<<LIS3DH_I1_CLICK | 1<<LIS3DH_I1_AOI1 | 0<<LIS3DH_I1_AOI2 | 0<<LIS3DH_I1_DRDY1 | 0<<LIS3DH_I1_DRDY2 | 0<<LIS3DH_I1_WTM | 1<<LIS3DH_I1_ORUN)
-//CONTROL REGISTER 4
+//CONTROL REGISTER 4   (W)
 #define LIS3DH_CTRL_REG4				0x23
 #define LIS3DH_BDU							BIT(7)
 #define LIS3DH_BLE							BIT(6)
@@ -268,7 +289,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_HR								BIT(3)
 #define LIS3DH_ST       				BIT(1)
 #define LIS3DH_SIM							BIT(0)
-#define LIS3DH_REG4_INIT				0x00
+#define LIS3DH_REG4_INIT				( ADBIT<<LIS3DH_FDS | 0<<LIS3DH_FDS | 0<<LIS3DH_FS | HRBIT<<LIS3DH_HR | 0<<LIS3DH_SIM)	//0x00
 //CONTROL REGISTER 5
 #define LIS3DH_CTRL_REG5				0x24
 #define LIS3DH_BOOT             BIT(7)

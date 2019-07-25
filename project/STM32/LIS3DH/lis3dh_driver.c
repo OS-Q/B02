@@ -400,18 +400,22 @@ status_t LIS3DH_GetAuxRaw(LIS3DH_Aux123Raw_t* buff) {
 * Output         : Temperature Values Registers buffer
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3DH_GetTempRaw(i8_t* buff) {
-  u8_t valueL;
-  u8_t valueH;
-  
-  if( !LIS3DH_ReadReg(LIS3DH_OUT_3_L, &valueL) )
+status_t LIS3DH_GetTempRaw(u8_t* buff) {
+
+   if( !LIS3DH_ReadReg(LIS3DH_OUT_1_L, buff) )
+    return MEMS_ERROR;  
+  if( !LIS3DH_ReadReg(LIS3DH_OUT_1_H, buff+1) )
     return MEMS_ERROR;
-  
-  if( !LIS3DH_ReadReg(LIS3DH_OUT_3_H, &valueH) )
+  if( !LIS3DH_ReadReg(LIS3DH_OUT_2_L, buff+2) )
     return MEMS_ERROR;
+  if( !LIS3DH_ReadReg(LIS3DH_OUT_2_H, buff+3) )
+    return MEMS_ERROR;	
+  if( !LIS3DH_ReadReg(LIS3DH_OUT_3_L, buff+4) )
+    return MEMS_ERROR;
+  if( !LIS3DH_ReadReg(LIS3DH_OUT_3_H, buff+5) )
+    return MEMS_ERROR;
+	printf("LIS3DH_GetTempRaw :%X %X %X %X %X %X\n",buff[0],buff[1],buff[2],buff[3],buff[4],buff[5]);
   //printf("Temp:H %X L %X\n",valueH,valueL);
-  *buff = (i8_t)( valueH );
-  
   return MEMS_SUCCESS;  
 }
 

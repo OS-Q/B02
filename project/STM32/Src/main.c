@@ -116,6 +116,7 @@ int main(void)
   /* USER CODE BEGIN SysInit */
 	//uint8_t TST=0x55;
 	//uint8_t ID=0x00;
+	uint8_t ADCVAL[6];
 	uint8_t buff=0x00;	
 	uint8_t lan[32];
 	i8_t buf=0x00;
@@ -151,6 +152,8 @@ int main(void)
 		//HAL_I2C_Mem_Read(&hi2c1, 0X30,0X22,1, &TST, 1, 1000);
 		LIS3DH_GetWHO_AM_I(&buff);
 		printf("WHO_AM_I :%X\n",buff);
+		LIS3DH_GetStatusAUX(&buff);
+		printf("StatusAUX :%X\n",buff);
     /* USER CODE END WHILE */
 		
 		if(DataReady)
@@ -164,12 +167,12 @@ int main(void)
 		//LIS3DH_GetTempRaw(&buf);
 		//if (LIS3DH_GetInt1Src(&buff))	printf("LIS3DH_GetInt1Src :%X\n",buff);
     /* USER CODE END WHILE */
-		LIS3DH_GetTempRaw(&buf);
-		printf("TempRaw :%X\n",buf);
+		
+		LIS3DH_GetTempRaw(ADCVAL);
+		
 		LIS3DH_GetAccAxesRaw(&leitura);
 		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
-		LIS3DH_GetStatusAUX(&buff);
-		printf("StatusAUX :%X\n",buff);
+
 		//LIS3DH_GetFifoSourceReg(&buff);
 		LIS3DH_GetFifoSourceFSS(&buff);
 		printf("FifoSourceFSS :%X\n",buff);

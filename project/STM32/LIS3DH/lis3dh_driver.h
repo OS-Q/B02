@@ -226,19 +226,26 @@ LIS3DH_NO_CLICK                        =               0x00
 
 #define LIS3DH_ADC			1
 #if LIS3DH_ADC 
-#define ADBIT		(0)
+#define ADBIT		(1)
 
 #else
-#define ADBIT		(1)
+#define ADBIT		(0)
 
 #endif
 
-
+#define LIS3DH_FIFO			1
+#if LIS3DH_FIFO 
+#define FFBIT		(1)
+#else
+#define FFBIT		(0)
+#endif
 //Register Definition (R)
 #define LIS3DH_WHO_AM_I					0x0F  // device identification register
 #define LIS3DH_WHO_NAME					0x33  
+
 //STATUS_REG_AUX 		(R)
 #define LIS3DH_STATUS_AUX				0x07
+
 //AUX REGISTER 	(R)
 #define LIS3DH_OUT_1_L					0x08
 #define LIS3DH_OUT_1_H					0x09
@@ -246,14 +253,16 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_OUT_2_H					0x0B
 #define LIS3DH_OUT_3_L					0x0C
 #define LIS3DH_OUT_3_H					0x0D
-// CONTROL REGISTER 0	(RW)
+
+// CONTROL REGISTER 0	(RW)  SDO pull-up
 #define LIS3DH_CTRL_REG0				0x1E
 #define LIS3DH_REG0_INIT				0x10
+
 //TEMPERATURE CONFIG REGISTER (RW)
 #define LIS3DH_TEMP_CFG_REG			0x1F
 #define LIS3DH_ADC_PD				   	BIT(7)
 #define LIS3DH_TEMP_EN					BIT(6)
-#define LIS3DH_TEMP_INIT				(ADBIT<<LIS3DH_ADC_PD | 1<<LIS3DH_TEMP_EN)
+#define LIS3DH_TEMP_INIT				(ADBIT<<LIS3DH_ADC_PD | ADBIT<<LIS3DH_TEMP_EN)
 // CONTROL REGISTER 1 (RW)
 #define LIS3DH_CTRL_REG1				0x20
 #define LIS3DH_ODR_BIT				  BIT(4)
@@ -296,7 +305,7 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_FIFO_EN          BIT(6)
 #define LIS3DH_LIR_INT1         BIT(3)
 #define LIS3DH_D4D_INT1         BIT(2)
-#define LIS3DH_REG5_INIT				0x40
+#define LIS3DH_REG5_INIT				( 0<<LIS3DH_BOOT | FFBIT<<LIS3DH_FIFO_EN | 0<<LIS3DH_LIR_INT1 | 0<<LIS3DH_D4D_INT1 )	//0x40
 //CONTROL REGISTER 6
 #define LIS3DH_CTRL_REG6				0x25
 #define LIS3DH_I2_CLICK					BIT(7)
@@ -428,7 +437,8 @@ LIS3DH_NO_CLICK                        =               0x00
 #define LIS3DH_FIFO_SRC_EMPTY                          0x20
   
 //INTERRUPT CLICK REGISTER
-#define LIS3DH_CLICK_CFG					0x38
+#define LIS3DH_CLICK_CFG															 0x38
+
 //INTERRUPT CLICK CONFIGURATION bit mask
 #define LIS3DH_ZD_ENABLE                               0x20
 #define LIS3DH_ZD_DISABLE                              0x00
@@ -547,7 +557,7 @@ status_t LIS3DH_GetStatusAUX(u8_t* val);
 status_t LIS3DH_GetAccAxesRaw(AxesRaw_t* buff);
 status_t LIS3DH_GetAuxRaw(LIS3DH_Aux123Raw_t* buff);
 status_t LIS3DH_GetClickResponse(u8_t* val);
-status_t LIS3DH_GetTempRaw(i8_t* val);
+status_t LIS3DH_GetTempRaw(u8_t* val);
 status_t LIS3DH_GetWHO_AM_I(u8_t* val);
 status_t LIS3DH_Get6DPosition(u8_t* val);
 

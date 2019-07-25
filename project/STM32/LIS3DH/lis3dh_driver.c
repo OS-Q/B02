@@ -1011,7 +1011,7 @@ status_t LIS3DH_ResetInt1Latch(void) {
   
   if( !LIS3DH_ReadReg(LIS3DH_INT1_SRC, &value) )
     return MEMS_ERROR;
-  
+  printf("LIS3DH_INT1_SRC :%X\n",value);
   return MEMS_SUCCESS;
 }
 
@@ -1027,7 +1027,7 @@ status_t LIS3DH_ResetInt2Latch(void) {
   
   if( !LIS3DH_ReadReg(LIS3DH_INT2_SRC, &value) )
     return MEMS_ERROR;
-  
+   printf("LIS3DH_INT2_SRC :%X\n",value);
   return MEMS_SUCCESS;
 }
 /*******************************************************************************
@@ -1043,7 +1043,7 @@ status_t LIS3DH_SetIntConfiguration(LIS3DH_Int1Conf_t ic) {
   
   if( !LIS3DH_ReadReg(LIS3DH_INT1_CFG, &value) )
     return MEMS_ERROR;
-  
+   printf("LIS3DH_INT1_CFG :%X\n",value);
   value &= 0x40; 
   value |= ic;
   
@@ -1369,7 +1369,7 @@ status_t LIS3DH_SetWaterMark(u8_t wtm) {
 status_t LIS3DH_GetStatusReg(u8_t* val) {
   if( !LIS3DH_ReadReg(LIS3DH_STATUS_REG, val) )
     return MEMS_ERROR;
-  
+  printf("LIS3DH_STATUS_REG :%X\n",*val);
   return MEMS_SUCCESS;  
 }
 
@@ -1389,7 +1389,7 @@ status_t LIS3DH_GetStatusBit(u8_t statusBIT, u8_t* val) {
   
   if( !LIS3DH_ReadReg(LIS3DH_STATUS_REG, &value) )
     return MEMS_ERROR;
-  
+  printf("LIS3DH_STATUS_REG :%X\n",value);
   switch (statusBIT){
   case LIS3DH_STATUS_REG_ZYXOR:     
     if(value &= LIS3DH_STATUS_REG_ZYXOR){     
@@ -1489,7 +1489,7 @@ status_t LIS3DH_GetAccAxesRaw(AxesRaw_t* buff) {
     return MEMS_ERROR;
   value = (int_least16_t)(valueL + ( valueH << 8 ));
   buff->AXIS_X = value>>4;
-  
+   printf("LIS3DH_GetAccAxesRaw :%X %X\n",valueH,valueL);
   if( !LIS3DH_ReadReg(LIS3DH_OUT_Y_L, &valueL) )
     return MEMS_ERROR;
   
@@ -1497,7 +1497,7 @@ status_t LIS3DH_GetAccAxesRaw(AxesRaw_t* buff) {
     return MEMS_ERROR;
   value = (int_least16_t)(valueL + ( valueH << 8 ));
   buff->AXIS_Y = value>>4;
-  
+   printf("LIS3DH_GetAccAxesRaw :%X %X\n",valueH,valueL);
   if( !LIS3DH_ReadReg(LIS3DH_OUT_Z_L, &valueL) )
     return MEMS_ERROR;
   
@@ -1505,7 +1505,7 @@ status_t LIS3DH_GetAccAxesRaw(AxesRaw_t* buff) {
     return MEMS_ERROR;
   value = (int_least16_t)(valueL + ( valueH << 8 ));
   buff->AXIS_Z = value>>4;
-  
+  printf("LIS3DH_GetAccAxesRaw :%X %X\n",valueH,valueL);
   return MEMS_SUCCESS; 
 }
 

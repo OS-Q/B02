@@ -150,10 +150,10 @@ int main(void)
 		HAL_IWDG_Refresh(&hiwdg);
 		//HAL_I2C_Mem_Read(&hi2c1, LIS3DH_I2C_ADDRESS,LIS3DH_WHO_AM_I,1, &buff, 1, 1000);
 		//HAL_I2C_Mem_Read(&hi2c1, 0X30,0X22,1, &TST, 1, 1000);
-		LIS3DH_GetWHO_AM_I(&buff);
-		printf("WHO_AM_I :%X\n",buff);
-		LIS3DH_GetStatusAUX(&buff);
-		printf("StatusAUX :%X\n",buff);
+//		LIS3DH_GetWHO_AM_I(&buff);
+//		printf("WHO_AM_I :%X\n",buff);
+//		LIS3DH_GetStatusAUX(&buff);
+//		printf("StatusAUX :%X\n",buff);
     /* USER CODE END WHILE */
 		
 		if(DataReady)
@@ -162,24 +162,25 @@ int main(void)
 			//Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
 			//printf("LIS3DH_GetAngle :%f\n",Angulo);
 			printf("DataReady :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
+			
 		}
 		/* USER CODE END WHILE */
 		//LIS3DH_GetTempRaw(&buf);
 		//if (LIS3DH_GetInt1Src(&buff))	printf("LIS3DH_GetInt1Src :%X\n",buff);
     /* USER CODE END WHILE */
 		
-		LIS3DH_GetTempRaw(ADCVAL);
-		
-		LIS3DH_GetAccAxesRaw(&leitura);
-		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
+//		LIS3DH_GetTempRaw(ADCVAL);
+//		
+//		LIS3DH_GetAccAxesRaw(&leitura);
+//		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 
 		//LIS3DH_GetFifoSourceReg(&buff);
-		LIS3DH_GetFifoSourceFSS(&buff);
-		printf("FifoSourceFSS :%X\n",buff);
+//		LIS3DH_GetFifoSourceFSS(&buff);
+//		printf("FifoSourceFSS :%X\n",buff);
 		//if(buff>1)HAL_I2C_Mem_Read(&hi2c1, 0XB0,0X2B,1,lan, buff, 1000);
 		//while(buff--) printf("Fifo %X:%X ",buff,lan[buff]);
-		LIS3DH_GetClickResponse(&buff);
-		printf("GetClickResponse :%X\n",buff);
+//		LIS3DH_GetClickResponse(&buff);
+//		printf("GetClickResponse :%X\n",buff);
 //		Angulo = GetAngle(leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z,0,0,GRAVIDADE);
 //		printf("LIS3DH_GetAngle :%f\n",Angulo);
 //		LIS3DH_GetAccAxesRaw(&leitura);

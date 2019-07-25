@@ -181,7 +181,7 @@ int main(void)
 //		printf("AccAxesRaw :%X %X %X\n",leitura.AXIS_X,leitura.AXIS_Y,leitura.AXIS_Z);
 		//LIS3DH_SetADCAux(State_t state);
     /* USER CODE END WHILE */
-		HAL_Delay(3000);
+		HAL_Delay(400);
 		HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
 		buff=0x00;	
 		buf=0x00;	

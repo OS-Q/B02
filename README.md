@@ -1,24 +1,8 @@
-﻿# [运动状态](https://github.com/OS-Q/D10)
-[![sites](OS-Q/OS-Q.png)](http://www.OS-Q.com)
-#### 归属采集单元：[W2](https://github.com/OS-Q/W2)
-#### 关于系统架构：[OS-Q](https://github.com/OS-Q/OS-Q)
+# [B02](https://github.com/OS-Q/B02)
 
-Edge-Q -> 体系 Q[1,4] -> 节点 M[1,12] -> 平台 W[1,52] -> 设备 D[1,365]
+[![sites](http://182.61.61.133/link/resources/OSQ.png)](http://www.OS-Q.com)
 
-### [设备描述](https://github.com/OS-Q/D10/wiki)
+### [简介](https://github.com/OS-Q/B02/wiki)
 
-运动状态采集模块，用于获取运动状态数据
-
-### [开放资源](https://github.com/OS-Q/D10)
-
-* [文档](docs/)
-* [工程](project/)
-
-### [平台资源](https://github.com/sochub)
-
-主控资料和选型方案详情可查阅
-[SoC资源平台](https://github.com/sochub)
-
-
-### [OS-Q : Operation System for edge devices](http://www.OS-Q.com/Edge/D10)
-####  2019-7-6
+[B02](https://github.com/OS-Q/B02) 板级支持
+### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)

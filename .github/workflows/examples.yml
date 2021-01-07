@@ -11,6 +11,9 @@ jobs:
         python-version: [3.7]
         project:
           - "project/arduino-blink"
+          - "project/libopencm3-blink"
+          - "project/stm32cube-hal-blink"
+          - "project/stm32cube-ll-blink"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -24,7 +27,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -U https://github.com/OS-Q/S03/archive/master.zip
-          platformio platform install https://github.com/OS-Q/P02.git
+          platformio platform install https://github.com/OS-Q/P01.git
       - name: Build B02
         run: |
           platformio run -d ${{ matrix.project }}

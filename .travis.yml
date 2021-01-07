@@ -4,7 +4,10 @@ python:
 
 env:
   - PLATFORMIO_PROJECT_DIR=project/arduino-blink
-
+  - PLATFORMIO_PROJECT_DIR=project/zephyr-blink
+  - PLATFORMIO_PROJECT_DIR=project/libopencm3-blink
+  - PLATFORMIO_PROJECT_DIR=project/stm32cube-ll-blink
+  - PLATFORMIO_PROJECT_DIR=project/stm32cube-hal-blink
 install:
   - pip install -U https://github.com/OS-Q/S03/archive/master.zip
   - platformio platform install https://github.com/OS-Q/P01.git
@@ -14,3 +17,4 @@ script:
 
 notifications:
   email: false
+

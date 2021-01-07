@@ -4,5 +4,8 @@
 
 ### [简介](https://github.com/OS-Q/B02/wiki)
 
-[B02](https://github.com/OS-Q/B02) 板级支持
+[B02](https://github.com/OS-Q/B02) 板级支持 [STM32F401](https://github.com/SoCXin/STM32F401)
+
+验证选项
+
 ### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)

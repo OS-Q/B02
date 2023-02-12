@@ -15,6 +15,7 @@
 | ------- | ------- | ------ | --------- |
 | [BL702](https://doc.soc.xin/BL702) |  √  |  √  |  √  |
 | [CH552](https://doc.soc.xin/CH552) |  √  |  √  |  √  |
+| [CH582](https://github.com/HaiMianBBao/CherryUSB-CH58x-DAPLink) |    |    |    |
 | [CH32V203](https://github.com/SoCXin/CH32V203) |    |    |    |
 | CH32V305 |    |    |    |
 | AT32F425 |    |    |    |

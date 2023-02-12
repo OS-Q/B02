@@ -1,0 +1,85 @@
+// ===================================================================================
+// Project:   picoDAP CMSIS-DAP compliant SWD Programmer based on CH551, CH552, CH554
+// Version:   v1.1
+// Year:      2022
+// Author:    Stefan Wagner
+// Github:    https://github.com/wagiminator
+// EasyEDA:   https://easyeda.com/wagiminator
+// License:   http://creativecommons.org/licenses/by-sa/3.0/
+// ===================================================================================
+//
+// Description:
+// ------------
+// The CH55x-based picoDAP is a CMSIS-DAP compliant debugging probe with SWD protocol
+// support. It can be used to program Microchip SAM and other ARM-based
+// microcontrollers. The Firmware is based on Ralph Doncaster's DAPLink-implementation
+// for CH55x microcontrollers and Deqing Sun's CH55xduino port.
+//
+// References:
+// -----------
+// - Blinkinlabs: https://github.com/Blinkinlabs/ch554_sdcc
+// - Deqing Sun: https://github.com/DeqingSun/ch55xduino
+// - Ralph Doncaster: https://github.com/nerdralph/ch554_sdcc
+// - WCH Nanjing Qinheng Microelectronics: http://wch.cn
+// - ARMmbed DAPLink: https://github.com/ARMmbed/DAPLink
+//
+// Compilation Instructions:
+// -------------------------
+// - Chip:     CH551, CH552 or CH554
+// - Clock:    16 MHz internal
+// - Adjust the firmware parameters in include/config.h if necessary.
+// - Make sure SDCC toolchain and Python3 with PyUSB is installed.
+// - Press BOOT button on the board and keep it pressed while connecting it via USB
+//   with your PC.
+// - Run 'make flash'.
+//
+// Operating Instructions:
+// -----------------------
+// Connect the picoDAP to the target board via the 10-pin connector or the pin header
+// (RST / DIO / CLK / GND). Make sure the target board is powered. You can supply
+// power via the 3V3 pin (max 150 mA) or the 5V pin (max 400 mA). Plug the picoDAP
+// into a USB port on your PC. Since it is recognized as a Human Interface Device
+// (HID), no driver installation is required. The picoDAP should work with any
+// debugging software that supports CMSIS-DAP (e.g. OpenOCD). Of course, it also
+// works with the SAMD DevBoards in the Arduino IDE 
+// (Tools -> Programmer -> Generic CMSIS-DAP).
+
+
+// ===================================================================================
+// Libraries, Definitions and Macros
+// ===================================================================================
+
+// Libraries
+#include <system.h>                         // system functions
+#include <delay.h>                          // delay functions
+#include <dap.h>                            // CMSIS-DAP functions
+
+// Prototypes for used interrupts
+void USB_interrupt(void);
+void USB_ISR(void) __interrupt(INT_NO_USB) {
+  USB_interrupt();
+}
+
+// Number of received bytes in endpoint
+extern volatile __xdata uint8_t HID_EP2_byteCount;
+
+// ===================================================================================
+// Main Function
+// ===================================================================================
+void main(void) {
+  // Setup
+  CLK_config();                             // configure system clock
+  DLY_ms(5);                                // wait for clock to settle
+  DAP_init();                               // init CMSIS-DAP
+
+  // Loop
+  while(1) {
+    if(HID_EP2_byteCount && !UEP1_T_LEN) {  // DAP packet received and out buffer empty?                      
+      DAP_Thread();                         // handle DAP packet
+      HID_EP2_byteCount = 0;                // clear byte counter
+      UEP2_CTRL = UEP2_CTRL & ~MASK_UEP_R_RES | UEP_R_RES_ACK;  // enable receive
+      UEP1_T_LEN = 64;                                          // hangs if smaller
+      UEP1_CTRL = UEP1_CTRL & ~MASK_UEP_T_RES | UEP_T_RES_ACK;  // enable send
+    }
+  }
+}

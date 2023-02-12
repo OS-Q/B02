@@ -20,6 +20,8 @@
 | AT32F425 |    |    |    |
 | M484 |    |    |    |
 | M482 |    |    |    |
+| [SWM341](https://github.com/Synwit-Co-Ltd/DAPLink) |    |    |    |
+
 
 
 

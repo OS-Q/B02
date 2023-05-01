@@ -1,6 +1,6 @@
 ﻿# [template-dap](https://github.com/OS-Q/template-dap)
 
-[template-dap](https://github.com/OS-Q/template-dap) 用于实现DAPLink工具
+[template-dap](https://github.com/OS-Q/template-dap) 用于标准化模板适配 [DAPLink](https://www.keil.com/pack/doc/CMSIS/DAP/html/index.html)
 
 ## 关键参数
 
@@ -16,11 +16,6 @@
 | [BL702](https://doc.soc.xin/BL702) |  √  |  √  |  √  |
 | [CH552](https://doc.soc.xin/CH552) |  √  |  √  |  √  |
 | [CH582](https://github.com/HaiMianBBao/CherryUSB-CH58x-DAPLink) |    |    |    |
-| [CH32V203](https://github.com/SoCXin/CH32V203) |    |    |    |
-| CH32V305 |    |    |    |
-| AT32F425 |    |    |    |
-| M484 |    |    |    |
-| M482 |    |    |    |
 | [SWM341](https://github.com/Synwit-Co-Ltd/DAPLink) |    |    |    |
 
 
